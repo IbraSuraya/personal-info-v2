@@ -1,0 +1,4 @@
+https://youtu.be/7FC04vPVryw?si=B8PJWtaveFEBDvqT - CheckPoint : 01:08:00
+SESI1 - Setup & Fetch Data API | Next JS 2023
+
+https://api.jikan.moe/v4/top/anime
