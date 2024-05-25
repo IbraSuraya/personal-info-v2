@@ -1,4 +1,5 @@
-import AnimeList from "./components/AnimeList";
+import AnimeList from "@/components/AnimeList";
+import Link from "next/link";
 
 export default async function Home() {
   const response = await fetch(
@@ -8,9 +9,17 @@ export default async function Home() {
 
   return (
     <div>
-      <h1>Page Root</h1>
-      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4">
-        {anime.data.map((data) => {
+      <div className="flex justify-between p-4 items-center">
+        <h1 className="text-2xl">Page Root</h1>
+        <Link
+          href="/populer"
+          className="md:text-xl text-md underline hover:text-gray-700 transition-all"
+        >
+          See All
+        </Link>
+      </div>
+      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
+        {anime.data.slice(0, 8).map((data) => {
           return (
             <div key={data.mal_id} className="shadow-xl">
               <AnimeList

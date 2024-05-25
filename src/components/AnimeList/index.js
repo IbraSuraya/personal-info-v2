@@ -10,6 +10,7 @@ export default function AnimeList({titles, images, id}) {
         width={350}
         height={350}
         priority
+        className="w-full max-h-64 object-cover"
       />
       <h3 className="font-bold md:text-xl text-md p-4">{titles}</h3>
     </Link>
