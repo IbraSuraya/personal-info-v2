@@ -1,11 +1,23 @@
-https://youtu.be/7FC04vPVryw?si=B8PJWtaveFEBDvqT - CheckPoint : 01:08:00
-SESI1 - Setup & Fetch Data API | Next JS 2023
+https://youtu.be/X-o-7Mu6lks?si=3ZP7FjEmnb8gpZrT - CheckPoint : 00:35:00
+SESI2 - Search Input API | Next JS 2023
+- Reusbilty Navbar
+  [NOW]
+    - Saat ini lagi MenuNotification.JS
+    - Ada fitur Read All dan See All taruh di bawah
+- Current Classnme Navbar automatis di dasborad
+
 
 https://api.jikan.moe/v4/top/anime
 
 - Icon Notif dan Search pada mobile dimasukin ke hamburger icon
-- Fitur Search masalah auto hilang
-- Navbar terlalu rame dan animelist apinya jgn di root page
-- warna underline project dan see all
-- padding taruh di root page
+- warna underline di project dan see all
 - bikin class css sendiri
+- History Searching
+
+- saat di page project anime, icon Search navbar di hidden
+- Automatis ganti tag
+- Saat route ke Project/API/AnimeList ada pop up error
+- Icon Notifikasi
+  - Ada fitur Read All dan See All taruh di bawah
+  - Notif ada pop up modal terpisah : Berserta status
+- Bikin datasbase dimana menggunakan faker.js (implementasi laravel WPUN kesini)
