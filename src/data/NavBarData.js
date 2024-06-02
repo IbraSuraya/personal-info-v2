@@ -6,9 +6,21 @@ export const menuData = [
 ];
 
 export const profileData = [
-  { name: "Your Profile", href: "#", currProject: true },
-  { name: "Settings", href: "#", currProject: false },
-  { name: "Sign out", href: "#", currProject: false },
+  {
+    isLogin: true,
+    body: [
+      { name: "Your Profile", href: "/" },
+      { name: "Settings", href: "/" },
+      { name: "Logout", href: "/" },
+    ],
+  },
+  {
+    isLogin: false,
+    body: [
+      { name: "Login", href: "/" },
+      { name: "Sign Up", href: "/" },
+    ],
+  },
 ];
 
 export const menuProjectData = [
@@ -16,13 +28,21 @@ export const menuProjectData = [
     header: "API",
     subMenu: [
       { name: "Anime - Jikan", href: "API/Anime" },
-      { name: "subDefault", href: "subDefault" },
+      { name: "subDefault1", href: "subDefault1" },
     ],
-
-    header: "Default",
+  },
+  {
+    header: "Default1",
     subMenu: [
-      { name: "subDefault", href: "subDefault" },
-      { name: "subDefault", href: "subDefault" },
+      { name: "subDefault2", href: "subDefault2" },
+      { name: "subDefault3", href: "subDefault3" },
+    ],
+  },
+  {
+    header: "Default2",
+    subMenu: [
+      { name: "subDefault4", href: "subDefault4" },
+      { name: "subDefault5", href: "subDefault5" },
     ],
   },
 ];

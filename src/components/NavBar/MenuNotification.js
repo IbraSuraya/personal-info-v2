@@ -3,6 +3,7 @@ import { classNames } from "@/Utilities/utils";
 import { historyNotif } from "@/data/DummyData";
 import Link from "next/link";
 import {
+  Button,
   Menu,
   MenuButton,
   MenuItem,
@@ -15,7 +16,6 @@ export default function MenuNotification({}) {
   const popupRef = useRef(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [notifHistory, setNotifHistory] = useState(historyNotif);
-  // Sorting notifications so that unread notifications appear first
   const sortedNotif = notifHistory.sort((a, b) => {
     // Sort by isRead status
     if (a.isRead !== b.isRead) {
@@ -38,6 +38,14 @@ export default function MenuNotification({}) {
     setNotifHistory(
       notifHistory.map((item) =>
         item.id === id ? { ...item, isRead: true } : item
+      )
+    );
+  };
+
+  const handleMarkAllAsRead = () => {
+    setNotifHistory(
+      notifHistory.map((item) =>
+        item.isRead ? item : { ...item, isRead: true }
       )
     );
   };
@@ -86,13 +94,13 @@ export default function MenuNotification({}) {
             >
               <div className="py-1">
                 <div className="flex justify-between px-4 py-1 items-center text-xs font-light border-b">
-                  <p className="">Notifications</p>
-                  <Link
-                    href="#"
-                    className=" underline hover:text-gray-500 transition-all"
+                  <p className="font-medium">Notifications</p>
+                  <button
+                    onClick={handleMarkAllAsRead}
+                    className="hover:underline hover:text-gray-500 transition-all"
                   >
                     Read All
-                  </Link>
+                  </button>
                 </div>
                 {notifHistory.length === 0 ? (
                   <p className="px-4 py-2 text-sm text-gray-500 text-center">
@@ -109,7 +117,7 @@ export default function MenuNotification({}) {
                               ? "bg-gray-100 text-gray-900"
                               : "text-gray-600",
                             !item.isRead
-                              ? "bg-green-100 hover:bg-green-200"
+                              ? "bg-yellow-100 hover:bg-yellow-200"
                               : "",
                             "block text-sm"
                           )}
@@ -138,6 +146,9 @@ export default function MenuNotification({}) {
                     </MenuItem>
                   ))
                 )}
+              </div>
+              <div className="font-extralight text-xs text-center border-t py-1">
+                <Link href="/" className="hover:underline hover:text-gray-500 transition-all hover:font-medium">See All</Link>
               </div>
             </MenuItems>
           </Transition>
