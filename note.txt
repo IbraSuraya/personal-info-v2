@@ -1,5 +1,5 @@
-https://youtu.be/X-o-7Mu6lks?si=3ZP7FjEmnb8gpZrT - CheckPoint : 00:35:00
-SESI2 - Search Input API | Next JS 2023
+https://youtu.be/t0OVq8nKKe4?si=fVC2n67FOBFo4isi - CheckPoint : 00:00:00
+SESI3 - UI Theming & Loading | Next JS 2023
 
 https://api.jikan.moe/v4/top/anime
 
@@ -20,6 +20,7 @@ https://api.jikan.moe/v4/top/anime
   - Bikin Page Your Profile, Setting, dan penggati kondisi belum Login
   - Bikin Modal pop up untuk login dan logout
 - Bikin datasbase dimana menggunakan faker.js (implementasi laravel WPUN kesini)
+- Selain untuk mengurangin load data dengan see all, menggunakan pagionation
 
 
 

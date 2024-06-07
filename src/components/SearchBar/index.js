@@ -1,6 +1,5 @@
 "use client";
 
-// components/SearchBar.js
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -13,8 +12,7 @@ export default function SearchBar({ allCategories }) {
   const router = useRouter();
 
   const handleSearch = () => {
-    alert(searchInputRef.current.value);
-    router.push(`/Project/API/Search/${searchInputRef.current.value}`)
+    router.push(`/Project/API/Anime/Search/${searchInputRef.current.value}`)
   };
 
   const toggleDropdown = () => {
@@ -46,7 +44,7 @@ export default function SearchBar({ allCategories }) {
   }, []);
 
   return (
-    <form ref={searchBarRef} className="lg:max-w-4xl md:max-w-lg mx-auto p-1">
+    <form ref={searchBarRef} className="lg:max-w-4xl md:max-w-lg mx-auto px-2 py-4">
       <div className="flex relative">
         <label
           htmlFor="search-dropdown"

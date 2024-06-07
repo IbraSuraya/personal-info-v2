@@ -2,18 +2,19 @@ import AnimeList from "@/components/AnimeList";
 import SearchBar from "@/components/SearchBar";
 import { topAnimeData } from "@/data/AnimeData";
 
-export default async function Anime() {
+export default async function Search({ params }) {
+  const { keyword } = params;
   const targetTop = topAnimeData[4];
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}${targetTop.href}`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`
   );
-  const anime = await response.json();
+  const searchAnime = await response.json();
 
   return (
     <>
       <section className="container mx-auto">
         <SearchBar allCategories={topAnimeData} />
-        <AnimeList api={anime} targetTop={targetTop} headerTitle={`Top ${targetTop.name}`} limit={8}/>
+        <AnimeList api={searchAnime} targetTop={targetTop} headerTitle={`Result ${decodeURIComponent(keyword)} ...`} limit={100}/>
       </section>
     </>
   );
