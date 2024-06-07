@@ -1,10 +1,5 @@
 https://youtu.be/X-o-7Mu6lks?si=3ZP7FjEmnb8gpZrT - CheckPoint : 00:35:00
 SESI2 - Search Input API | Next JS 2023
-- Reusbilty Navbar
-  [NOW]
-    
-- Current Classnme Navbar automatis di dasborad
-
 
 https://api.jikan.moe/v4/top/anime
 
@@ -25,3 +20,13 @@ https://api.jikan.moe/v4/top/anime
   - Bikin Page Your Profile, Setting, dan penggati kondisi belum Login
   - Bikin Modal pop up untuk login dan logout
 - Bikin datasbase dimana menggunakan faker.js (implementasi laravel WPUN kesini)
+
+
+
+
+
+SUSAH
+- Navbar
+    - Masalah XMarkIcon yang muncul setelah sidebar otomatis tertutup
+    - Masalah styling dashboard, dimana tidak berubah saat akses pertama web
+    - Mobile : Masalah ukuran layout notification dan search terlalu besar

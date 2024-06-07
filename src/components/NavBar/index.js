@@ -1,9 +1,8 @@
 "use client";
 
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SideBar from "./Sidebar";
 import MenuSearch from "./MenuSearch";
 import MenuNotification from "./MenuNotification";
@@ -14,12 +13,33 @@ import Hambuger from "./Hambuger";
 
 export default function NavBar() {
   const router = useRouter();
+  const dropdownRef = useRef(null);
   const [currNav, setCurrNav] = useState(router.pathname);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    setCurrNav(router.pathname);
+    setIsSidebarOpen(false);
+    setIsDropdownOpen(false);
+  }, [router.pathname]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleNavBar = (event, href) => {
     event.preventDefault();
     setCurrNav(href);
+    setIsSidebarOpen(false);
     router.push(`${href}`);
   };
 
@@ -27,6 +47,7 @@ export default function NavBar() {
     event.preventDefault();
     setCurrNav(href);
     setIsDropdownOpen(false);
+    setIsSidebarOpen(false);
     router.push(href);
   };
 
@@ -39,19 +60,30 @@ export default function NavBar() {
             <div className="relative flex h-16 items-center justify-between">
               {/* Mobile menu button - Hambuger */}
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <Hambuger open={ open }/>
+                <Hambuger
+                  open={open}
+                  setIsSidebarOpen={setIsSidebarOpen}
+                  isSidebarOpen={isSidebarOpen}
+                />
               </div>
 
-              {/* NavBar Right Side */}
+              {/* NavBar Left Side */}
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 {/* Logo */}
                 <LogoNav />
 
                 {/* NavBar */}
-                <MenuNavBar onNavBar={ handleNavBar } onDropdownItem={ handleDropdownItemClick } currNav={currNav} isDropdownOpen={isDropdownOpen} setIsDropdownOpen={setIsDropdownOpen}/>
+                <MenuNavBar
+                  onNavBar={handleNavBar}
+                  onDropdownItem={handleDropdownItemClick}
+                  currNav={currNav}
+                  isDropdownOpen={isDropdownOpen}
+                  setIsDropdownOpen={setIsDropdownOpen}
+                  dropdownRef={dropdownRef}
+                />
               </div>
 
-              {/* NavBar Left SIde */}
+              {/* NavBar Right SIde */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Icon Search */}
                 <MenuSearch />
@@ -66,7 +98,17 @@ export default function NavBar() {
           </div>
 
           {/* Sub Main */}
-          <SideBar onNavBar={ handleNavBar } />
+          <SideBar
+            router={router}
+            setCurrNav={setCurrNav}
+            onNavBar={handleNavBar}
+            onDropdownItem={handleDropdownItemClick}
+            currNav={currNav}
+            isDropdownOpen={isDropdownOpen}
+            setIsDropdownOpen={setIsDropdownOpen}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
         </header>
       )}
     </Disclosure>
