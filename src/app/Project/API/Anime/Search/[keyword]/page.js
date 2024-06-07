@@ -1,3 +1,4 @@
+import { capitalizeEachWord } from "@/Utilities/utils";
 import AnimeList from "@/components/AnimeList";
 import SearchBar from "@/components/SearchBar";
 import { topAnimeData } from "@/data/AnimeData";
@@ -14,7 +15,13 @@ export default async function Search({ params }) {
     <>
       <section className="container mx-auto">
         <SearchBar allCategories={topAnimeData} />
-        <AnimeList api={searchAnime} targetTop={targetTop} headerTitle={`Result ${decodeURIComponent(keyword)} ...`} limit={100}/>
+        <AnimeList
+          api={searchAnime}
+          targetTop={targetTop}
+          headerTitle={`Result ${capitalizeEachWord(
+            decodeURIComponent(keyword)
+          )} ...`}
+        />
       </section>
     </>
   );

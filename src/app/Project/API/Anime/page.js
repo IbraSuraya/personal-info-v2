@@ -4,16 +4,17 @@ import { topAnimeData } from "@/data/AnimeData";
 
 export default async function Anime() {
   const targetTop = topAnimeData[4];
+  const limit = 8;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}${targetTop.href}`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}${targetTop.href}?limit=${limit}`
   );
-  const anime = await response.json();
+  const topAnime8 = await response.json();
 
   return (
     <>
       <section className="container mx-auto">
         <SearchBar allCategories={topAnimeData} />
-        <AnimeList api={anime} targetTop={targetTop} headerTitle={`Top ${targetTop.name}`} limit={8}/>
+        <AnimeList api={topAnime8} targetTop={targetTop} headerTitle={`Top ${targetTop.name}`}/>
       </section>
     </>
   );

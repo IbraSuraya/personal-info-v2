@@ -1,9 +1,9 @@
-import Dashboard from "./Dashboard/page";
+import Homepage from "./Homepage/page";
 
 export default function Home() {
   return (
     <>
-      <Dashboard />
+      <Homepage />
     </>
   );
 }

@@ -1,5 +1,5 @@
 export const menuData = [
-  { name: "Dashboard", href: "/", currMenu: true },
+  { name: "Home", href: "/", currMenu: true },
   { name: "About", href: "/About", currMenu: false },
   { name: "Contact", href: "/Contact", currMenu: false },
   { name: "Support", href: "/Support", currMenu: false },

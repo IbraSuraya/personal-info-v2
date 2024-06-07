@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
 img {
-  transition: .3s ease all;
-  -webkit-transition: .3s ease all;
-  -moz-transition: .3s ease all;
-  -ms-transition: .3s ease all;
-  -o-transition: .3s ease all;
+  transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+  -ms-transition: 0.3s ease all;
+  -o-transition: 0.3s ease all;
 }
 
 img:hover {
@@ -26,6 +28,22 @@ img:hover {
   -webkit-line-clamp: 1; /* Jumlah baris yang ditampilkan sebelum teks dipangkas */
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side, #374151 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #374151);
+  animation: s3 1s infinite linear;
+}
+
+@keyframes s3 {
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 /* :root {
