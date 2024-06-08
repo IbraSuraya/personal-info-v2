@@ -14,9 +14,9 @@ export default function MenuNavBar({
     <>
       <div className="hidden sm:ml-6 sm:block">
         <div className="flex space-x-4">
-          {menuData.map((item) => (
+          {menuData.map((item, index) => (
             <a
-              key={item.name}
+              key={index}
               href={item.href}
               className={classNames(
                 currNav === item.href

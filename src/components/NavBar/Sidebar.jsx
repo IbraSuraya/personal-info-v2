@@ -45,9 +45,9 @@ export default function SideBar({
     isSidebarOpen && (
       <DisclosurePanel className="sm:hidden">
         <div ref={sidebarRef} className="space-y-1 px-2 pb-3 pt-2">
-          {menuData.map((item) => (
+          {menuData.map((item, index) => (
             <Disclosure.Button
-              key={item.name}
+              key={index}
               href={item.href}
               className={classNames(
                 currNav === item.href

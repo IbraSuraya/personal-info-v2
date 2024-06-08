@@ -31,8 +31,8 @@ export default function MenuProfile({}) {
           leaveTo="transform opacity-0 scale-95"
         >
           <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            {profileData[0].body.map((item) => (
-              <MenuItem key={item.name}>
+            {profileData[0].body.map((item, index) => (
+              <MenuItem key={index}>
                 {({ focus }) => (
                   <a
                     href={item.href}

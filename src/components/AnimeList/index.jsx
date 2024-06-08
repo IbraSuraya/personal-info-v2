@@ -1,22 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function AnimeList({ api, targetTop, headerTitle }) {
+export default function AnimeList({ api, headerTitle, hrefSeeAll }) {
   return (
     <div className="">
       <div className="flex justify-between p-4 items-center">
         <h1 className="text-xl font-bold">{headerTitle}</h1>
-        {!headerTitle.includes("Result") ? (
+        {/Top/.test(headerTitle)? (
           <Link
-            href={targetTop.href}
-            className="md:text-xl text-md underline hover:text-gray-700 transition-all"
+            href={`/Project/API/Anime${hrefSeeAll}`}
+            className="md:text-md text-sm underline hover:text-gray-700 transition-all"
           >
             See All
           </Link>
         ) : null}
       </div>
-      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
-        {api.data.map((data) => {
+      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4 ">
+        {api.data?.map((data) => {
           return (
             <Link
               key={data.mal_id}

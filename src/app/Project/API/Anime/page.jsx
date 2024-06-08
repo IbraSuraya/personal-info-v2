@@ -14,7 +14,7 @@ export default async function Anime() {
     <>
       <section className="container mx-auto">
         <SearchBar allCategories={topAnimeData} />
-        <AnimeList api={topAnime8} targetTop={targetTop} headerTitle={`Top ${targetTop.name}`}/>
+        <AnimeList api={topAnime8} headerTitle={`Top ${targetTop.name}`} hrefSeeAll = {"/TopAnime"}/>
       </section>
     </>
   );

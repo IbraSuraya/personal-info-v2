@@ -1,18 +1,21 @@
 "use client";
 
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 export default function SearchBar({ allCategories }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All categories");
+  const [searchQuery, setSearchQuery] = useState("");
   const searchBarRef = useRef(null);
   const searchInputRef = useRef();
   const router = useRouter();
 
   const handleSearch = () => {
-    router.push(`/Project/API/Anime/Search/${searchInputRef.current.value}`)
+    const keyword = searchInputRef.current.value;
+    if (!keyword) return;
+    router.push(`/Project/API/Anime/Search/${keyword}`);
   };
 
   const toggleDropdown = () => {
@@ -36,6 +39,10 @@ export default function SearchBar({ allCategories }) {
     }
   };
 
+  const clearSearch = () => {
+    setSearchQuery("");
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -44,7 +51,10 @@ export default function SearchBar({ allCategories }) {
   }, []);
 
   return (
-    <form ref={searchBarRef} className="lg:max-w-4xl md:max-w-lg mx-auto px-2 py-4">
+    <form
+      ref={searchBarRef}
+      className="lg:max-w-4xl md:max-w-lg mx-auto px-2 py-4 "
+    >
       <div className="flex relative">
         <label
           htmlFor="search-dropdown"
@@ -84,8 +94,8 @@ export default function SearchBar({ allCategories }) {
               className="py-2 text-sm text-gray-200 "
               aria-labelledby="dropdown-button"
             >
-              {allCategories.map((category) => (
-                <li key={category.name}>
+              {allCategories.map((category, index) => (
+                <li key={index}>
                   <button
                     type="button"
                     onClick={() => handleCategorySelect(category.name)}
@@ -102,12 +112,25 @@ export default function SearchBar({ allCategories }) {
           <input
             type="search"
             id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm font-medium text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:outline-none"
+            className="block p-2.5 w-full z-20 text-sm font-medium text-gray-900 bg-gray-100 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:outline-none"
             placeholder="Search ..."
             required
             ref={searchInputRef}
             onClick={handleInputChange}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
+          {searchQuery && (
+            <div className="absolute flex items-center inset-y-0 right-12 pr-3">
+              <button
+                type="button"
+                onClick={clearSearch}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+          )}
           <button
             type="submit"
             className="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-gray-300 bg-gray-800 rounded-r-lg border border-gray-700 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300"

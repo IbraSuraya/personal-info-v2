@@ -10,17 +10,18 @@ export default function MenuSearch({}) {
 
   const handleSearch = () => {
     const searchValue = searchInputRef.current.value;
-    if (searchValue.trim() !== '') {
-      alert('Pencarian berhasil: ' + searchValue);
+    if (searchValue.trim() !== "") {
+      alert("Pencarian berhasil: " + searchValue);
       setSearchQuery("");
       setIsPopupOpen(false); // Menutup popup setelah berhasil melakukan pencarian
     } else {
-      alert('Masukkan kata kunci untuk melakukan pencarian.');
+      alert("Masukkan kata kunci untuk melakukan pencarian.");
+      // return;
     }
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       event.preventDefault();
       handleSearch();
     }
