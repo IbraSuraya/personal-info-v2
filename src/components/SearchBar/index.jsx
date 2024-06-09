@@ -88,7 +88,7 @@ export default function SearchBar({ allCategories }) {
         {dropdownOpen && (
           <div
             id="dropdown"
-            className="absolute left-0 mt-1 bg-gray-700 divide-y divide-gray-100 rounded-lg shadow w-40"
+            className="absolute left-0.5 top-8 mt-1 bg-gray-700 divide-y divide-gray-100 rounded-lg shadow w-40"
           >
             <ul
               className="py-2 text-sm text-gray-200 "

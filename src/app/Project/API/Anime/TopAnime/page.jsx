@@ -3,13 +3,13 @@
 import Loading from "@/app/loading";
 import AnimeList from "@/components/AnimeList";
 import Pagination from "@/components/Pagination";
-import { topAnimeData } from "@/data/AnimeData";
+import { topJinkanData } from "@/data/JinkanData";
+import { getJikanResponse } from "@/libs/api-animeJikan";
 import { useEffect, useState } from "react";
 
 export default function TopAnime() {
-  const targetTop = topAnimeData[4];
-  const limit = 12;
-  const [page, setPage] = useState(1);
+  const targetTop = topJinkanData[0];
+  const [currPage, setCurrPage] = useState(1);
   const [topAnime, setTopAnime] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,13 +17,13 @@ export default function TopAnime() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}${targetTop.href}?page=${page}&limit=${limit}`
-      );
-      const data = await response.json();
+      const data = await getJikanResponse({
+        resource: targetTop.href,
+        query: { page: currPage, limit: 12 },
+      });
       setTopAnime(data);
     } catch (err) {
-      console.error("Error fetching top anime:", error);
+      console.error("Error fetching top anime:", err);
     } finally {
       setIsLoading(false);
     }
@@ -31,22 +31,28 @@ export default function TopAnime() {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, [currPage]);
 
   return (
-    <>
+    <div className="container mx-auto">
       <div className="pt-6">
         <h3 className="text-center text-2xl font-medium">Top Anime</h3>
-        <p className="text-center font-light text-md">#{page}</p>
+        <p className="text-center font-light text-md">#{currPage}</p>
       </div>
       {isLoading ? (
         <Loading />
       ) : (
         <>
           <AnimeList api={topAnime} />
-          <Pagination data={topAnime.pagination} currPage={page}/>
+          <Pagination
+            currPage={currPage}
+            setCurrPage={setCurrPage}
+            lastPage={topAnime.pagination.last_visible_page}
+            itemPage={topAnime.pagination.items.per_page}
+            itemTotal={topAnime.pagination.items.total}
+          />
         </>
       )}
-    </>
+    </div>
   );
 }

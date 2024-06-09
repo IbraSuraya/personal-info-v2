@@ -1,20 +1,24 @@
 import AnimeList from "@/components/AnimeList";
 import SearchBar from "@/components/SearchBar";
-import { topAnimeData } from "@/data/AnimeData";
+import { topJinkanData } from "@/data/JinkanData";
+import { getJikanResponse } from "@/libs/api-animeJikan";
 
 export default async function Anime() {
-  const targetTop = topAnimeData[4];
-  const limit = 8;
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}${targetTop.href}?limit=${limit}`
-  );
-  const topAnime8 = await response.json();
+  const targetAPI = topJinkanData[0];
+  const topAnime = await getJikanResponse({
+    resource: targetAPI.href,
+    query: { limit: 12 },
+  });
 
   return (
     <>
       <section className="container mx-auto">
-        <SearchBar allCategories={topAnimeData} />
-        <AnimeList api={topAnime8} headerTitle={`Top ${targetTop.name}`} hrefSeeAll = {"/TopAnime"}/>
+        <SearchBar allCategories={topJinkanData} />
+        <AnimeList
+          api={topAnime}
+          headerTitle={`Top ${targetAPI.name}`}
+          hrefSeeAll={"/TopAnime"}
+        />
       </section>
     </>
   );

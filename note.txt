@@ -1,18 +1,21 @@
-https://youtu.be/V3MKSAC3KIg?si=h8ng92O76X5YTxZq - CheckPoint : 00:30:00
-SESI4 - Pagination Core Logic | Next JS 2023
+https://youtu.be/xSgcvTohNcw?si=o02sDxR7jxrZgCkY - CheckPoint : 00:00:00
+SESI6 - Nge-Trick Nested Data | Next JS 2023 | Next JS 2023
 
 https://api.jikan.moe/v4/top/anime
+
+- Thema Dark and Light
+- Design Page Anime
+  - Search Bar
+  - Ada 4 Menu Card
 
 - Icon Notif dan Search pada mobile dimasukin ke hamburger icon
 - warna underline di project dan see all
 - bikin class css sendiri
 - History Searching
-
 - saat di page project anime, icon Search navbar di hidden
 - Automatis ganti tag
-- Saat route ke Project/API/AnimeList ada pop up error
 - Icon Notifikasi
-  - Notif ada pop up modal terpisah : Berserta status
+  - Notif Baru ada pop up modal terpisah : Berserta status
   - Page Seluruh History Notifikasi
 - Icon Menu Profile
   - Fitur Login / Logout
@@ -20,16 +23,30 @@ https://api.jikan.moe/v4/top/anime
   - Bikin Page Your Profile, Setting, dan penggati kondisi belum Login
   - Bikin Modal pop up untuk login dan logout
 - Bikin datasbase dimana menggunakan faker.js (implementasi laravel WPUN kesini)
-- Selain untuk mengurangin load data dengan see all, menggunakan pagionation
 - Card animelist infonya ditambah jangan image dan judul doang
-- Menu Icon Search tidak handle input kosong
+- pagionation dengan hook atau re-dax atau loadMore
 - Bawaan Next js
   - Chapter 11 : Adding Search and Pagination
+- Pagination Anime Top 
+  - Handle melebihi dan kurang dari page tersedia
+  - Loncat Page menggunakan UI yang dibuat
+  - Design UI
+  - Current Page ada di URL
+    - Maybe : karena currPage pake state setiap refersh currPage kembali ke 1
+- Pagination versi infinite Scroll
+- https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
+- VideoPlayer
+  - Bikin animation untuk open close Player
+  - Handle : 1. Bila fetch api lama, 2. Bila yotuube rusak
 
-
+- Alert
+  - Posisi masih dibawah
+  - Handle hapusnya
 
 SUSAH
 - Navbar
-    - Masalah XMarkIcon yang muncul setelah sidebar otomatis tertutup
-    - Masalah styling dashboard, dimana tidak berubah saat akses pertama web
-    - Mobile : Masalah ukuran layout notification dan search terlalu besar
+  - Masalah XMarkIcon yang muncul setelah sidebar otomatis tertutup
+  - Masalah styling dashboard, dimana tidak berubah saat akses pertama web
+  - Mobile : Masalah ukuran layout notification dan search terlalu besar
+- Pagination
+  - Component ini tidak benar2 di tengah sehingga tidak sinkron dengan card animelist
